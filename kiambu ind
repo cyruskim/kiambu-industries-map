@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Kiambu County Industries Map</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css" />
+  <style>
+    #map {
+      height: 400px;
+    }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
+  <script>
+    // Initialize the map
+    var map = L.map('map').setView([-1.1659, 36.8356], 10);
+
+    // Create a custom icon with reduced size
+    var industryIcon = L.icon({
+      iconUrl: 'industry-icon.png',
+      iconSize: [8, 8],
+      iconAnchor: [8, 16],
+      popupAnchor: [0, -16]
+    });
+
+    // Create a marker and bind a popup
+    function createMarker(latitude, longitude, name) {
+      var marker = L.marker([latitude, longitude], { icon: industryIcon }).addTo(map);
+      marker.bindPopup(name);
+    }
+
+    // Add markers for major industries in Kiambu County
+    createMarker(-1.1672, 36.8309, "Pullman Industries (K) Ltd.");
+    createMarker(-1.1707, 36.8426, "Kifaru Industries Ltd");
+    createMarker(-1.1611, 36.8514, "Khan industries limited");
+    createMarker(-1.1604, 36.8237, "Linava Industries. Khaki Bags & Paper Rolls Wholesale");
+    createMarker(-1.1687, 36.8295, "BHURAJ METAL INDUSTRIES LTD");
+    createMarker(-1.1774, 36.8163, "Kel Chemicals Limited -Westlands");
+    createMarker(-1.1623, 36.8436, "Gee Tee Industries Limited");
+    createMarker(-1.1528, 36.8383, "Capwell Industries Limited");
+    createMarker(-1.1675, 36.8437, "Rojopak Industries Ltd");
+    createMarker(-1.1618, 36.8386, "Umami Industries Limited");
+    createMarker(-1.1662, 36.8445, "Promed Industries Limited");
+    createMarker(-1.1625, 36.8383, "LARY KRAFT INDUSTRIES LTD");
+    createMarker(-1.1644, 36.8491, "Top Choice Industry Ltd");
+    createMarker(-1.1612, 36.8393, "Chandaria Industries");
+
+    // Add a tile layer (OpenStreetMap)
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+      maxZoom: 18
+    }).addTo(map);
+  </script>
+</body>
+</html>
