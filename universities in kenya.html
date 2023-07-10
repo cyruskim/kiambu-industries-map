@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Kenyan Universities Map</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css" />
+  <style>
+    #map {
+      height: 400px;
+    }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
+  <script>
+    // Initialize the map
+    var map = L.map('map').setView([-1.2921, 36.8219], 7);
+
+    // Create a custom icon
+    var universityIcon = L.icon({
+      iconUrl: 'university-icon.png',
+      iconSize: [32, 32],
+      iconAnchor: [16, 32],
+      popupAnchor: [0, -32]
+    });
+
+    // Create a marker and bind a popup
+    function createMarker(latitude, longitude, name) {
+      var marker = L.marker([latitude, longitude], { icon: universityIcon }).addTo(map);
+      marker.bindPopup(name);
+    }
+
+    // Add markers for universities
+    createMarker(-1.2624, 36.7922, "University of Nairobi");
+    createMarker(-1.1694, 36.9366, "Strathmore University");
+    createMarker(-1.3414, 36.7607, "Kenyatta University");
+    createMarker(-0.6943, 34.7661, "Egerton University");
+    // Add more universities here...
+
+    // Add a tile layer (OpenStreetMap)
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+      maxZoom: 18
+    }).addTo(map);
+  </script>
+</body>
+</html>
