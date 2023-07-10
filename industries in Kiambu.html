@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Kiambu County Industries Map</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css" />
+  <style>
+    #map {
+      height: 400px;
+    }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
+  <script>
+    // Initialize the map
+    var map = L.map('map').setView([-1.1659, 36.8356], 10);
+
+    // Create a custom icon
+    var industryIcon = L.icon({
+      iconUrl: 'industry-icon.png',
+      iconSize: [32, 32],
+      iconAnchor: [16, 32],
+      popupAnchor: [0, -32]
+    });
+
+    // Create a marker and bind a popup
+    function createMarker(latitude, longitude, name) {
+      var marker = L.marker([latitude, longitude], { icon: industryIcon }).addTo(map);
+      marker.bindPopup(name);
+    }
+
+    // Add markers for major industries in Kiambu County
+    createMarker(-1.1672, 36.8309, "Tea Factory");
+    createMarker(-1.1707, 36.8426, "Coffee Processing Plant");
+    createMarker(-1.1611, 36.8514, "Flower Farm");
+    // Add more industries here...
+
+    // Add a tile layer (OpenStreetMap)
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+      maxZoom: 18
+    }).addTo(map);
+  </script>
+</body>
+</html>
